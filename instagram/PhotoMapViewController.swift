@@ -120,7 +120,7 @@ class PhotoMapViewController: UIViewController, UINavigationControllerDelegate, 
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
         headerView.backgroundColor = UIColor(white: 1, alpha: 0.9)
         
-        let profileView = UIImageView(frame: CGRect(x: 10, y: 10, width: 30, height: 30))
+        let profileView = PFImageView(frame: CGRect(x: 10, y: 10, width: 30, height: 30))
         profileView.clipsToBounds = true
         profileView.layer.cornerRadius = 15;
         profileView.layer.borderColor = UIColor(white: 0.7, alpha: 0.8).cgColor
@@ -128,7 +128,12 @@ class PhotoMapViewController: UIViewController, UINavigationControllerDelegate, 
         
         // Set the avatar
         let feed = feeds[section]
-        profileView.image = UIImage(named: "profile_tab")
+        profileView.file = (feed["author"] as! PFUser).object(forKey: "avatar") as? PFFile
+        profileView.loadInBackground()
+        if profileView.file == nil {
+            profileView.image = UIImage(named: "profile_tab")
+        }
+
         headerView.addSubview(profileView)
         
         let author = (feed["author"] as! PFUser).username

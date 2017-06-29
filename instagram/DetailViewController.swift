@@ -31,9 +31,10 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        avatarView.file = PFUser.current()?.object(forKey: "avatar") as? PFFile
-        avatarView.loadInBackground()
-        if avatarView.file == nil {
+        if PFUser.current()!.object(forKey: "avatar") as? PFFile != nil {
+            avatarView.file = PFUser.current()!.object(forKey: "avatar") as? PFFile
+            avatarView.loadInBackground()
+        } else {
             avatarView.image = UIImage(named: "profile_tab")
         }
         avatarView.clipsToBounds = true

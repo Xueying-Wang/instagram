@@ -79,7 +79,11 @@ class ProfileViewController: UIViewController,UIImagePickerControllerDelegate, U
         
         // Do something with the images (based on your use case)
         self.avatarView.image = editedImage
-        PFUser.current()?.setObject(editedImage, forKey: "avatar")
+        if let image = Post.getPFFileFromImage(image: editedImage) {
+            PFUser.current()!.setObject(image as PFFile, forKey: "avatar")
+            PFUser.current()!.saveInBackground()
+            print("set")
+        }
         
         // Dismiss UIImagePickerController to go back to your original view controller
         dismiss(animated: true, completion: nil)
