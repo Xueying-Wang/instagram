@@ -25,6 +25,7 @@ class NewPostViewController: UIViewController,UIImagePickerControllerDelegate, U
         
         // Do something with the images (based on your use case)
         
+        
         // Dismiss UIImagePickerController to go back to your original view controller
         dismiss(animated: true, completion: nil)
         self.photoView.image = editedImage!
@@ -75,6 +76,17 @@ class NewPostViewController: UIViewController,UIImagePickerControllerDelegate, U
         view.endEditing(true)
     }
 
+    func resize(image: UIImage, newSize: CGSize) -> UIImage {
+        let resizeImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        resizeImageView.contentMode = UIViewContentMode.scaleAspectFill
+        resizeImageView.image = image
+        
+        UIGraphicsBeginImageContext(resizeImageView.frame.size)
+        resizeImageView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
