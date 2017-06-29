@@ -26,6 +26,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
         )
         
+        if let currentUser = PFUser.current() {
+            print("Welcome back \(currentUser.username!) 😀")
+            
+            // TODO: Load tab bar controller and set as root view controller
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+            window?.rootViewController = tabBarController
+        }
+        
         return true
     }
 
