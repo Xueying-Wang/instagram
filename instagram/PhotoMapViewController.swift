@@ -14,7 +14,7 @@ class PhotoMapViewController: UIViewController, UINavigationControllerDelegate, 
     
     class InfiniteScrollActivityView: UIView {
         var activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView()
-        static let defaultHeight:CGFloat = 60.0
+        static let defaultHeight:CGFloat = 40
         
         required init?(coder aDecoder: NSCoder) {
             super.init(coder: aDecoder)
@@ -120,19 +120,28 @@ class PhotoMapViewController: UIViewController, UINavigationControllerDelegate, 
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
         headerView.backgroundColor = UIColor(white: 1, alpha: 0.9)
         
-        let profileView = UIImageView(frame: CGRect(x: 10, y: 10, width: 30, height: 30))
+        let profileView = PFImageView(frame: CGRect(x: 10, y: 5, width: 30, height: 30))
         profileView.clipsToBounds = true
         profileView.layer.cornerRadius = 15;
         profileView.layer.borderColor = UIColor(white: 0.7, alpha: 0.8).cgColor
         profileView.layer.borderWidth = 1;
         
-        // Set the avatar
+        
         let feed = feeds[section]
-        profileView.image = UIImage(named: "profile_tab")
+        
+        // Set the avatar
+        if let avatarfile = (feed["author"] as! PFUser)["avatar"] as? PFFile {
+            profileView.file = avatarfile
+            profileView.loadInBackground()
+        } else {
+            profileView.image = UIImage(named: "profile_tab")
+        }
+        
+        
         headerView.addSubview(profileView)
         
         let author = (feed["author"] as! PFUser).username
-        let nameLabel = UILabel(frame: CGRect(x: 50, y: 10, width: 70, height: 30))
+        let nameLabel = UILabel(frame: CGRect(x: 45, y: 5, width: 70, height: 30))
         nameLabel.text = author
         nameLabel.textColor = UIColor.black
 
@@ -141,21 +150,17 @@ class PhotoMapViewController: UIViewController, UINavigationControllerDelegate, 
         let time = (feed.createdAt!).description
         let index = time.index(time.startIndex, offsetBy: 10)
         let date = time.substring(to: index)
-        let dateLabel = UILabel(frame: CGRect(x: 140, y: 10, width: 150, height: 30))
+        let dateLabel = UILabel(frame: CGRect(x: 140, y: 5, width: 150, height: 30))
         dateLabel.text = "Date: " + date
         dateLabel.textColor = UIColor.black
         dateLabel.font = UIFont (name: "HelveticaNeue-Light", size: 15)
         headerView.addSubview(dateLabel)
         
-        // Add a UILabel for the date here
-        // Use the section number to get the right URL
-        // let label = ...
-        
         return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 40
     }
     
     func didPullToRefresh(_ refreshControl: UIRefreshControl){
@@ -164,7 +169,6 @@ class PhotoMapViewController: UIViewController, UINavigationControllerDelegate, 
     
     @IBAction func logout(_ sender: UIBarButtonItem) {
         PFUser.logOutInBackground { (error: Error?) in
-            self.feeds = []
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -205,11 +209,13 @@ class PhotoMapViewController: UIViewController, UINavigationControllerDelegate, 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let cell = sender as! UITableViewCell
-        if let indexPath = tableView.indexPath(for: cell){
-            let feed = feeds[indexPath.row]
-            let detailViewController = segue.destination as! DetailViewController
-            detailViewController.feed = feed
+        if segue.identifier == "detailSegue" {
+            let cell = sender as! UITableViewCell
+            if let indexPath = tableView.indexPath(for: cell){
+                let feed = feeds[indexPath.row]
+                let detailViewController = segue.destination as! DetailViewController
+                detailViewController.feed = feed
+            }
         }
     }
 

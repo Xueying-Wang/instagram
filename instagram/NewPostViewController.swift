@@ -17,6 +17,7 @@ class NewPostViewController: UIViewController,UIImagePickerControllerDelegate, U
     
     var editedImage: UIImage? = nil
     
+    
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : Any]) {
         // Get the image captured by the UIImagePickerController
@@ -44,6 +45,7 @@ class NewPostViewController: UIViewController,UIImagePickerControllerDelegate, U
             print("Camera 🚫 available so we will use photo library instead")
             vc.sourceType = .photoLibrary
         }
+        
         
         self.present(vc, animated: true, completion: nil)
     }
@@ -91,6 +93,7 @@ class NewPostViewController: UIViewController,UIImagePickerControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
     }
 
     override func didReceiveMemoryWarning() {

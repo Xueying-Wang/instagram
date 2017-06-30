@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import ParseUI
 
 class LoginViewController: UIViewController {
     
@@ -22,6 +23,11 @@ class LoginViewController: UIViewController {
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
                 self.usernameField.text = ""
                 self.passwordField.text = ""
+                if (user?.object(forKey: "avatar")) == nil {
+                    user?.setObject(Post.getPFFileFromImage(image: UIImage(named: "profile_tab"))!, forKey: "avatar")
+                    user?.saveInBackground()
+                    print("set while logging in")
+                }
             }
         }
     }
@@ -30,7 +36,8 @@ class LoginViewController: UIViewController {
         let newUser = PFUser()
         newUser.username = usernameField.text
         newUser.password = passwordField.text
-        newUser.setObject(UIImage(named: "profile_tab"), forKey: "avatar")
+        newUser.setObject(Post.getPFFileFromImage(image: UIImage(named: "profile_tab"))!, forKey: "avatar")
+        newUser.saveInBackground()
         newUser.signUpInBackground { (success: Bool, error: Error?) in
             if success {
                 print("User created successfully")
