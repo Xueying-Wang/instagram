@@ -87,6 +87,13 @@ class SearchViewController: UIViewController, UICollectionViewDataSource, UIColl
         let width = collectionView.frame.size.width / cellsPerLine - interItemSpacingTotal / cellsPerLine
         layout.itemSize = CGSize(width: width, height: width)
         
+        
+        // Setup Search bar
+        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 300, height: 200))
+        searchBar.delegate = self
+        let leftNavBarButton = UIBarButtonItem(customView: searchBar)
+        navigationItem.leftBarButtonItem = leftNavBarButton
+        
         fetchPosts()
         collectionView.reloadData()
         didPullToRefresh(refreshControl)
@@ -157,18 +164,21 @@ class SearchViewController: UIViewController, UICollectionViewDataSource, UIColl
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if (kind == UICollectionElementKindSectionHeader) {
-            let headerView:UICollectionReusableView =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SearchHeader", for: indexPath)
-            
-            return headerView
-        }
-        
-        return UICollectionReusableView()
-    }
+    
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        if (kind == UICollectionElementKindSectionHeader) {
+//            let headerView:UICollectionReusableView =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SearchHeader", for: indexPath)
+//            
+//            return headerView
+//        }
+//        
+//        return UICollectionReusableView()
+//    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
         self.collectionView.reloadData()
+        searchBar.resignFirstResponder()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -187,9 +197,6 @@ class SearchViewController: UIViewController, UICollectionViewDataSource, UIColl
         }
         
             self.collectionView.reloadData()
-            searchBar.becomeFirstResponder()
-        
-        
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
