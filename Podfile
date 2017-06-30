@@ -10,6 +10,7 @@ target 'instagram' do
 	pod 'Parse'
 	pod 'ParseUI'
 	pod 'AlamofireImage', '~> 3.1'
+	pod 'CameraManager', '~> 3.1'
 
   target 'instagramTests' do
     inherit! :search_paths

@@ -3,6 +3,7 @@ PODS:
   - AlamofireImage (3.2.0):
     - Alamofire (~> 4.1)
   - Bolts/Tasks (1.8.4)
+  - CameraManager (3.1.4)
   - Parse (1.14.4):
     - Bolts/Tasks (~> 1.8)
   - ParseUI (1.2.0):
@@ -11,6 +12,7 @@ PODS:
 
 DEPENDENCIES:
   - AlamofireImage (~> 3.1)
+  - CameraManager (~> 3.1)
   - Parse
   - ParseUI
 
@@ -18,9 +20,10 @@ SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  CameraManager: 837ff54004e37b83533abf0543daf143fae851e4
   Parse: b0aa91d2c435e53d4a9af26e741e014c9b35c42e
   ParseUI: af2eba584799da4a9fbdac0e178662d7438b502e
 
-PODFILE CHECKSUM: b232b5366620569bd776a79be4b68cb375432314
+PODFILE CHECKSUM: c91ff0dc4b0a0eae7ca8d58f02076e70c85f59c0
 
 COCOAPODS: 1.2.1

@@ -16,10 +16,6 @@ class PhotoCell: UITableViewCell {
     
     @IBOutlet weak var captionLabel: UILabel!
     
-    @IBOutlet weak var authorLabel: UILabel!
-    
-    @IBOutlet weak var timeLabel: UILabel!
-    
     
     var instagramPost: PFObject! {
         didSet {
