@@ -22,7 +22,6 @@
 		2209D0161F0486BF008FEFDE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2209D0151F0486BF008FEFDE /* ProfileViewController.swift */; };
 		2209D0191F05AE16008FEFDE /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2209D0181F05AE16008FEFDE /* PhotoCollectionViewCell.swift */; };
 		2209D01B1F05C707008FEFDE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2209D01A1F05C707008FEFDE /* SearchViewController.swift */; };
-		2220EFAB1F06F1FD004DAC4A /* SearchCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2220EFAA1F06F1FC004DAC4A /* SearchCollectionReusableView.swift */; };
 		7FF0EE3706B86FCB46ED6326 /* Pods_instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9346C882A50C0F005326FF /* Pods_instagram.framework */; };
 		B947722F826ABCAB0CA532AA /* Pods_instagramUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77CEDDFECE157666573FB18F /* Pods_instagramUITests.framework */; };
 		F3179DAEF5D155FFA6DD0DA8 /* Pods_instagramTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00BF2DE064838D39AAE89F25 /* Pods_instagramTests.framework */; };
@@ -69,7 +68,6 @@
 		2209D0151F0486BF008FEFDE /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2209D0181F05AE16008FEFDE /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		2209D01A1F05C707008FEFDE /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		2220EFAA1F06F1FC004DAC4A /* SearchCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCollectionReusableView.swift; sourceTree = "<group>"; };
 		5E0F7182661CE2842AAF9229 /* Pods-instagramUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagramUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-instagramUITests/Pods-instagramUITests.release.xcconfig"; sourceTree = "<group>"; };
 		77CEDDFECE157666573FB18F /* Pods_instagramUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_instagramUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B2316E6CCA01559E53C57E3 /* Pods-instagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-instagram/Pods-instagram.release.xcconfig"; sourceTree = "<group>"; };
@@ -180,7 +178,6 @@
 			children = (
 				2209D00F1F0320C5008FEFDE /* PhotoCell.swift */,
 				2209D0181F05AE16008FEFDE /* PhotoCollectionViewCell.swift */,
-				2220EFAA1F06F1FC004DAC4A /* SearchCollectionReusableView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -500,7 +497,6 @@
 				2209D00E1F03180B008FEFDE /* Post.swift in Sources */,
 				2209D0161F0486BF008FEFDE /* ProfileViewController.swift in Sources */,
 				2209D0121F0456EA008FEFDE /* DetailViewController.swift in Sources */,
-				2220EFAB1F06F1FD004DAC4A /* SearchCollectionReusableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -89,7 +89,7 @@ class SearchViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         
         // Setup Search bar
-        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 300, height: 200))
+        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 340, height: 200))
         searchBar.delegate = self
         let leftNavBarButton = UIBarButtonItem(customView: searchBar)
         navigationItem.leftBarButtonItem = leftNavBarButton
@@ -209,6 +209,16 @@ class SearchViewController: UIViewController, UICollectionViewDataSource, UIColl
         searchBar.text = ""
         filteredFeeds = self.feeds
         searchBar.resignFirstResponder()
+        self.collectionView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! UICollectionViewCell
+        if let indexPath = collectionView.indexPath(for: cell){
+            let feed = feeds[indexPath.row]
+            let detailViewController = segue.destination as! DetailViewController
+            detailViewController.feed = feed
+        }
     }
     
     /*

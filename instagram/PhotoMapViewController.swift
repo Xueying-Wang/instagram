@@ -168,6 +168,7 @@ class PhotoMapViewController: UIViewController, UINavigationControllerDelegate, 
     }
     
     @IBAction func logout(_ sender: UIBarButtonItem) {
+        NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)
         PFUser.logOutInBackground { (error: Error?) in
             self.dismiss(animated: true, completion: nil)
         }

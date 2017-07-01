@@ -12,7 +12,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="instagram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -281,6 +281,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="photoView" destination="9Un-Xw-X3t" id="Na6-wq-PGg"/>
+                                            <segue destination="x2J-hv-Qcc" kind="show" id="D2S-yx-c1Y"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -288,9 +289,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="MvG-0b-SbS">
-                        <barButtonItem key="rightBarButtonItem" title="Search" id="i0J-F8-R3F"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="MvG-0b-SbS"/>
                     <connections>
                         <outlet property="collectionView" destination="vac-lP-Ehp" id="ZkA-UT-Fp3"/>
                     </connections>
@@ -591,6 +590,6 @@
         <image name="profile_tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HkZ-o8-IyH"/>
+        <segue reference="D2S-yx-c1Y"/>
     </inferredMetricsTieBreakers>
 </document>
