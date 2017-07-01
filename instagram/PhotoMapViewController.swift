@@ -83,6 +83,7 @@ class PhotoMapViewController: UIViewController, UINavigationControllerDelegate, 
         query.includeKey("author")
         query.addDescendingOrder("createdAt")
         query.limit = 20
+
         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
             if let posts = posts {
                 self.isMoreDataLoading = false

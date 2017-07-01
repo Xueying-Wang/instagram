@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import ParseUI
+import MBProgressHUD
 
 class ProfileViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate {
     
@@ -224,6 +225,7 @@ class ProfileViewController: UIViewController,UIImagePickerControllerDelegate, U
     
     func fetchPosts(){
         // construct query
+
         let query = PFQuery(className: "Post")
         query.includeKey("author")
         query.whereKey("author", equalTo: PFUser.current()!)
@@ -250,6 +252,7 @@ class ProfileViewController: UIViewController,UIImagePickerControllerDelegate, U
                 self.tableView.reloadData()
                 self.collectionView.reloadData()
                 self.refreshControl.endRefreshing()
+                
             } else {
                 print(error?.localizedDescription ?? "error")
             }

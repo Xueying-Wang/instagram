@@ -18,6 +18,7 @@ class Post: NSObject {
      - parameter completion: Block to be executed after save operation is complete
      */
     class func postUserImage(image: UIImage?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
+        
         // Create Parse object PFObject
         let post = PFObject(className: "Post")
         

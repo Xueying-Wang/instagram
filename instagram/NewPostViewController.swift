@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class NewPostViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -60,13 +61,16 @@ class NewPostViewController: UIViewController,UIImagePickerControllerDelegate, U
     }
     
     @IBAction func submitPost(_ sender: UIButton) {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         Post.postUserImage(image: editedImage, withCaption: captionField.text ?? "") { (success: Bool, error: Error?) in
             if success {
                 print("The message was saved!")
+                MBProgressHUD.hide(for: self.view, animated: true)
             } else if let error = error {
                 print("Problem saving message: \(error.localizedDescription)")
             }
         }
+        
         dismiss(animated: true, completion: nil)
     }
     

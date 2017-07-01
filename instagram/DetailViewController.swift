@@ -55,6 +55,11 @@ class DetailViewController: UIViewController {
         let index = time.index(time.startIndex, offsetBy: 19)
         self.timeLabel.text = "Time: " + time.substring(to: index)
     }
+    
+    @IBAction func onTap(_ sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "imageToProfile", sender: sender)
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
